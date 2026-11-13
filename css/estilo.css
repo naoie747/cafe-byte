@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 :root {
-    --cor-fundo: #fbf6f1;
-    --cor-texto: #3b2a20;
-    --cor-cartao: #ffffff;
-    --cor-titulo: #4b2e1f;
+    --cor-fundo: #1c1512;
+    --cor-texto: #f3e9e2;
+    --cor-cartao: #2a201b;
+    --cor-titulo: #f2b56b;
+    --cor-suave: #3d2f27;
     --cor-cafe: #4b2e1f;
     --cor-destaque: #d9822b;
-    --cor-suave: #f1e3d3;
 }
 * {
     box-sizing: border-box;
@@ -215,12 +215,14 @@ img {
     color: #991b1b;
 }
 
-body.escuro {
-    --cor-fundo: #1c1512;
-    --cor-texto: #f3e9e2;
-    --cor-cartao: #2a201b;
-    --cor-titulo: #f2b56b;
-    --cor-suave: #3d2f27;
+body.claro {
+    --cor-fundo: #fbf6f1;
+    --cor-texto: #3b2a20;
+    --cor-cartao: #ffffff;
+    --cor-titulo: #4b2e1f;
+    --cor-cafe: #4b2e1f;
+    --cor-destaque: #d9822b;
+    --cor-suave: #f1e3d3;
 }
 
 body {
@@ -370,4 +372,29 @@ body {
 .mensagem {
     font-weight: 600;
     color: var(--cor-destaque);
+}
+
+/* acabamento */
+/*rolagem suave ao clicar nos links do menu */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ao pular para uma seção, deixa espaço para o cabeçalho fixo */
+section {
+    scroll-margin-top: 80px;
+}
+
+/*contorno bem visivel para quem navega pelo teclado (tab) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible{
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+/* cor do texto quando selecionado com o mouse */
+::selection {
+    background-color:var(--cor-destaque);
+    color: #ffffff;
 }

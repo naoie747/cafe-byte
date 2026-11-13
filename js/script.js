@@ -42,20 +42,21 @@ if (estaAberto(diaDaSemana, hora)) {
     avisoStatus.classList.add('fechado-agora');
 }
 
-// modo escuro
+// modo claro
 const botaoTema=document.querySelector('#botao-tema');
 
 function atualizarIconeTema(){
-    if (document.body.classList.contains('escuro')) {
-        botaoTema.textContent = '🌙';
+    if (document.body.classList.contains('claro')) {
+        botaoTema.textContent = '☀️';
     } else {
-        botaoTema.textContent = '☀️'
+        botaoTema.textContent = '🌙';
     }
 }
 
 botaoTema.addEventListener('click',function () {
-    document.body.classList.toggle('escuro');
+    document.body.classList.toggle('claro');
     atualizarIconeTema();
+    localStorage.setItem('cafebyte-tema', document.body.classList.contains('claro'));
 });
 
 // menu do celular
@@ -235,37 +236,6 @@ formEntrega.addEventListener('submit', function (evento){
     formEntrega.reset();
 })
 
-const LATITUDE = -23.55;
-const LONGITUDE = -46.63;
-const caixaClima = document.querySelector('#clima');
-
-async function carregarClima() {
-    const url = 'https://api.open-meteo.com/v1/forecast'
-    + `?latitude=${LATITUDE}&longitude=${LONGITUDE}`
-    + '&current=temperature_2m';
-
-    try {
-        const respota = await fetch(url);
-        const dados = await resposta.json();
-        const temperatura = Math.round(dados.current.temperatura_2m);
-
-        let sugestao = '';
-        if (temperatura < 20) {
-            sugestao = 'Friozinho! Que tal um chocolate quente? 🍫';
-        } else if (temperatura < 27) {
-            sugestao = 'Clima perfeito para um cappucino. ☕';
-        } else {
-            sugestao = 'Calorão! Um suco de laranja geladinho cai bem. 🍊';
-        }
-        caixaClima.textContent = `🌡️ Agora faz ${temperatura}ºC por aqui. ${sugestao}`;
-    } catch (erro) {
-        caixaClima.textContent = 'Não foi possível consultar o clima agora.';
-        console.log(erro);
-    }
-}
-
-carregarClima();
-
 // endereco pelo cep
 const campoCep = document.querySelector('#cep');
 const campoEndereco = document.querySelector('#endereco');
@@ -299,3 +269,12 @@ async function buscarCep() {
 }
 
 campoCep.addEventListener('change', buscarCep);
+
+//rodape: ano sempre atualizado
+document.querySelector('#ano').textContent = new Date().getFullYear();
+
+// lembra o tema
+if (localStorage.getItem('cafebyte-tema') === 'true') {
+    document.body.classList.add('claro');
+    atualizarIconeTema();
+}

@@ -260,7 +260,7 @@ async function buscarCep() {
         }
 
         campoEndereco.value = `${dados.logradouro}. ${dados.bairro}. ${dados.localidade} - ${dados.uf}`;
-        msfCep.textContent = 'Endereço encontrado! Agora digite o número.';
+        msgCep.textContent = 'Endereço encontrado! Agora digite o número.';
         document.querySelector('#numero').focus();
     } catch (erro) {
         msgCep.textContent = 'Não foi possível consultar o CEP. Verifique a internet.';

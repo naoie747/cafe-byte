@@ -8,13 +8,16 @@
 </head>
     <body>
         <!--não leia isto-->
+        <body class="escuro"></body>
         <header class="topo">
             <a href="inicio" class="logo">☕ Café Byte</a>
             <nav id="menu">
                 <a href="#sobre">Sobre</a>
                 <a href="#cardapio">Cardápio</a>
+                <a href="#pedido">Pedido</a>
                 <a href="#contato">Contato</a>
             </nav>
+            <nav class="menu"></nav>
             <button id="botao-tema" class="botao-tema" aria-label="Mudar tema">🌙</button>
             <button id="botao-menu" class="botao-menu" aria-label="Abrir menu">☰</button>
         </header>
@@ -24,6 +27,7 @@
                 <h1>Café quentinho, código fresquinho.</h1>
                 <p>Cafés especiais, bolos caseiros e um cantinho com Wi-Fi para estudar</p>
                 <p id="status" class="status"></p>
+                <div id="clima" class="clima">⌛ Consultando o clima...</div>
                 <a href="cardapio" class="botao">Ver cardápio</a>
             </section>
             <section id="sobre" class="secao">
@@ -62,29 +66,36 @@
 
             <section id="cardapio" class="secao">
                 <h2>Cardápio</h2>
-                <p>Alguns dos nossos queridinhos:</p>
-                <div class="cards">
-                   <article class="card">
-                    <span class="emoji">☕</span>
-                    <h3>Café expresso</h3>
-                    <p>Curto, encorpado e cheiroso.</p>
-                    <p class="preco">R$ 6,50</p>
-                   </article>
-                   <article class="card">
-                    <span class="emoji">☕︎</span>
-                    <h3>Cappucino</h3>
-                    <p>Café, leite vaporizado e canela.</p>
-                    <p class="preco"> R$ 9,90</p>
-                   </article>
-                   <article class="card">
-                    <span class="emoji">🧀</span>
-                    <h3>Pão de queijo</h3>
-                    <p>Quentinho, saído do forno.</p>
-                    <p class="preco">R$5,00</p>
-                   </article>
+                <p>Escolha uma categoria ou procure pelo nome:</p>
+                <div class="filtros">
+                    <input type="search" id="busca" class="busca" placeholder="🔎 Buscar no cardápio...">
+                    <button class="filtro ativo" data-categoria="todos">Todos</button>
+                    <button class="filtro" data-categoria="bebidas">Bebidas</button>
+                    <button class="filtro" data-categoria="doce">Doces</button>
+                    <button class="filtro" data-categoria="salgado">Salgados</button>
                 </div>
+                <div id="lista-produtos" class="cards"></div>
             </section>    
             
+            <section id="pedido" class="secao">
+                <h2>Meu pedido</h2>
+                <ul id="itens-pedido" class="itens-pedido"></ul>
+                <p class="total">Total: <strong id="total">R$ 0,00</strong></p>
+
+                <h3>Entrega</h3>
+                <form id="form-entrega" class="form">
+                    <label for="cep">CEP</label>
+                    <input id="cep" placeholder="00000-000" maxlength="9" required>
+                    <p id="msg-cep" class="mensagem"></p>
+                    <label for="endereco">Endereço</label>
+                    <input id="endereco" placeholder="Rua, bairro e cidade" required>
+                    <label for="numero">Número</label>
+                    <input id="numero" placeholder="Ex.: 123" required>
+                    <button type="submit" class="botao">Finalizar pedido</button>
+                </form>
+                <p id="msg-pedido" class="mensagem"></p>
+            </section>
+
             <section id="contato" class="secao">
                 <h2>Contato</h2>
                 <p>Rua das Flores, 123, Centro</p>
@@ -92,7 +103,6 @@
                 <p>✉️ <a href="mailto:contato@cafebyte.com.br">contato@cafebyte.com.br</a></p>
                 <p>📷 <a href="https://www.instagram.com/" target="_blank">Siga a gente no instagram</a></p>
             </section>            
-            </section>
         </main>
         <footer class="rodape">
             <p>&copy; 2026 Café Byte - Feito por Renan no curso Web do Zero</p>

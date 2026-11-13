@@ -2,7 +2,7 @@
 :root {
     --cor-fundo: #fbf6f1;
     --cor-texto: #3b2a20;
-    --cor-cartão: #ffffff;
+    --cor-cartao: #ffffff;
     --cor-titulo: #4b2e1f;
     --cor-cafe: #4b2e1f;
     --cor-destaque: #d9822b;
@@ -27,7 +27,7 @@ h3 {
 }
 
 a {
-    color: var(-cor-destaque);
+    color: var(--cor-destaque);
 }
 
 img {
@@ -129,7 +129,7 @@ img {
     align-items:center;
     text-align:center;
     padding: 48px 24px;
-    background: linear-gradient(135def, var(--cor-suave), var(--cor-fundo));
+    background: linear-gradient(135deg, var(--cor-suave), var(--cor-fundo));
 }
 
 .destaque h1 {
@@ -178,7 +178,7 @@ img {
 }
 
 @media(max-width:700px) {
-    .top {
+    .topo {
         flex-wrap: wrap;
     }
     .destaque h1 {
@@ -261,4 +261,113 @@ body {
     .menu.mostrar{
         display:flex;
     }
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.busca {
+    flex: 1 1 220px;
+    padding: 10px 16px;
+    border: 2px solid var(--cor-suave);
+    border-radius: 999px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.filtro {
+    padding: 8px 16px;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 999px;
+    background: none;
+    color: var(--cor-texto);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.filtro.ativo {
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .preco{
+    margin-top: auto;
+}
+
+/* meu pedido */
+.itens-pedido {
+    list-style: none;
+    padding: 0;
+}
+
+.itens-pedido li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cor-suave);
+}
+
+.itens-pedido li span:first-child {
+    flex: 1;
+}
+
+.remover {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 50%;
+    background: none;
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.total {
+    font-size: 1.3rem;
+    text-align: right;
+}
+
+/* formulario de entrega */
+.form {
+    display: grid;
+    gap: 6px;
+    max-width: 480px;
+}
+
+.form input {
+    padding: 10px 14px;
+    border: 2px solid var(--cor-suave);
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+}
+
+.form .botao {
+    margin-top: 12px;
+    justify-self: start;
+}
+
+.mensagem {
+    font-weight: 600;
+    color: var(--cor-destaque);
 }
